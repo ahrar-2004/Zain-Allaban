@@ -4,17 +4,17 @@ import { Clock, Shield, Users, Map } from 'lucide-react';
 const About = () => {
   const values = [
     {
-      icon: <Clock className="h-6 w-6 text-[#58A0C8]" />,
+      icon: <Clock className="h-6 w-6 text-[#0028F5]" />,
       title: "Freshly Served",
       description: "Our ice creams are crafted and served fresh every day.",
     },
     {
-      icon: <Shield className="h-6 w-6 text-[#58A0C8]" />,
+      icon: <Shield className="h-6 w-6 text-[#0028F5]" />,
       title: "Premium Quality",
       description: "We use only high-quality ingredients for a rich taste.",
     },
     {
-      icon: <Users className="h-6 w-6 text-[#58A0C8]" />,
+      icon: <Users className="h-6 w-6 text-[#0028F5]" />,
       title: "Customer Satisfaction",
       description: "Loved by families and kids across the city.",
     },
@@ -24,16 +24,16 @@ const About = () => {
     <div className="bg-white text-[#1f1f1f]">
       {/* Hero */}
       <section className="py-16 md:py-24 text-center px-4">
-        <h1 className="text-4xl font-bold mb-4 text-[#113F67]">About ZAIN ALLABAN</h1>
+        <h1 className="text-4xl font-bold mb-4 text-[#0028F5]">About ZAIN ALLABAN</h1>
         <p className="text-[#4a4a4a] max-w-2xl mx-auto text-lg">
           At ZAIN ALLABAN, we serve happiness in every scoop. Discover our delightful variety of ice creams made with love and care.
         </p>
       </section>
 
       {/* Overview */}
-      <section className="py-12 bg-[#FDF5AA]">
+      <section className="py-12 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 text-center">
-          <h2 className="text-2xl font-semibold mb-4 text-[#113F67]">Our Flavors</h2>
+          <h2 className="text-2xl font-semibold mb-4 text-[#0028F5]">Our Flavors</h2>
           <p className="text-[#4a4a4a] mb-8">
             Explore our signature flavors that keep our customers coming back for more.
           </p>
@@ -41,9 +41,9 @@ const About = () => {
             {['Vanilla Dream', 'Choco Bliss', 'Berry Burst'].map((flavor) => (
               <div
                 key={flavor}
-                className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition"
+                className="bg-white p-3 rounded-md shadow-sm hover:shadow-md transition border border-[#e0e0e0]"
               >
-                <span className="font-medium text-[#34699A]">{flavor}</span>
+                <span className="font-medium text-[#0028F5]">{flavor}</span>
               </div>
             ))}
           </div>
@@ -53,10 +53,10 @@ const About = () => {
       {/* Why Choose Us */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl font-semibold text-center mb-12 text-[#113F67]">Why Choose Us</h2>
+          <h2 className="text-2xl font-semibold text-center mb-12 text-[#0028F5]">Why Choose Us</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {values.map((item, index) => (
-              <div key={index} className="p-6 rounded-md text-center bg-[#f9f9f9]">
+              <div key={index} className="p-6 rounded-md text-center bg-white border border-gray-100 shadow-sm hover:shadow-md transition">
                 <div className="flex justify-center mb-4">{item.icon}</div>
                 <h3 className="text-lg font-semibold mb-2">{item.title}</h3>
                 <p className="text-[#4a4a4a] text-sm">{item.description}</p>
@@ -67,23 +67,23 @@ const About = () => {
       </section>
 
       {/* Store Location */}
-      <section className="py-16 bg-[#FDF5AA]">
+      <section className="py-16 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 flex flex-col md:flex-row gap-8 items-center">
           <div className="md:w-1/2">
-            <h2 className="text-2xl font-semibold mb-4 text-[#113F67]">Visit Our Store</h2>
+            <h2 className="text-2xl font-semibold mb-4 text-[#0028F5]">Visit Our Store</h2>
             <p className="text-[#4a4a4a] mb-4">
               Come enjoy your favorite flavors at our cozy ice cream shop.
             </p>
             <div className="flex gap-3 items-start">
-              <Map className="h-5 w-5 mt-1 text-[#58A0C8]" />
+              <Map className="h-5 w-5 mt-1 text-[#0028F5]" />
               <p className="text-[#4a4a4a] text-sm">
                 123 Ice Cream Street, Sweet Town, Pakistan
               </p>
             </div>
           </div>
-          <div className="md:w-1/2 bg-white p-6 rounded shadow-sm flex items-center justify-center">
+          <div className="md:w-1/2 bg-white p-6 rounded shadow-sm flex items-center justify-center border border-gray-100">
             <div className="text-center">
-              <Map className="h-10 w-10 mx-auto text-[#58A0C8] mb-2" />
+              <Map className="h-10 w-10 mx-auto text-[#0028F5] mb-2" />
               <p className="text-[#4a4a4a] font-medium">Family-Friendly Environment</p>
             </div>
           </div>
@@ -100,7 +100,7 @@ const About = () => {
             { label: 'Open Hours', value: '12PM - 12AM' },
           ].map((stat, index) => (
             <div key={index}>
-              <p className="text-3xl font-bold text-[#34699A] mb-2">{stat.value}</p>
+              <p className="text-3xl font-bold text-[#0028F5] mb-2">{stat.value}</p>
               <p className="text-[#4a4a4a] text-sm">{stat.label}</p>
             </div>
           ))}

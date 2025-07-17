@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, Phone, Mail, MapPin } from 'lucide-react';
+import { Menu as MenuIcon, X, Phone, Mail, MapPin } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,64 +12,37 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Services', href: '/services' },
-    { name: 'About', href: '/about' },
-    { name: 'Contact', href: '/contact' },
-  ];
-
   return (
     <>
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? 'bg-white shadow-md border-b border-gray-200' : 'bg-white'
-        }`}
-      >
+      <nav className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-white'}`}>
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16">
+          <div className="flex justify-between items-center h-20">
             {/* Logo */}
-            <div className="text-xl font-bold text-white bg-[#113F67] px-3 py-1 rounded-md">
-              ZAIN ALLABAN
+            <div className="flex items-center">
+              <img src="/logo.png" alt="Zaain Allaban Logo" className="h-12 w-auto mr-3" />
             </div>
 
             {/* Desktop Nav */}
-            <div className="hidden lg:flex space-x-6">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  className="text-sm text-[#113F67] hover:text-[#34699A] transition"
-                >
-                  {item.name}
-                </a>
-              ))}
+            <div className="hidden lg:flex space-x-8 items-center">
+              <Link to="/" className="text-gray-700 hover:text-[#0028F5] font-medium text-sm">Home</Link>
+              <Link to="/services" className="text-gray-700 hover:text-[#0028F5] font-medium text-sm">Services</Link>
+              <Link to="/menu" className="text-gray-700 hover:text-[#0028F5] font-medium text-sm">Menu</Link>
+              <Link to="/about" className="text-gray-700 hover:text-[#0028F5] font-medium text-sm">About</Link>
+              <Link to="/contact" className="text-gray-700 hover:text-[#0028F5] font-medium text-sm">Contact</Link>
             </div>
 
-            {/* Contact + CTA */}
-            <div className="hidden md:flex items-center space-x-4">
-              <a
-                href="tel:+971500000000"
-                className="flex items-center text-sm text-[#113F67] hover:text-[#34699A]"
-              >
-                <Phone className="w-4 h-4 mr-1" />
-                +971 50 000 0000
-              </a>
-              <a
-                href="/contact"
-                className="px-4 py-2 bg-[#34699A] hover:bg-[#113F67] text-white text-sm rounded transition"
-              >
-                Order Now
+            {/* Contact Info Desktop */}
+            <div className="hidden md:flex items-center space-x-6">
+              <a href="tel:+971561837606" className="flex items-center text-sm text-gray-600 hover:text-[#0028F5]">
+                <Phone className="w-4 h-4 mr-2" />
+                <span className="font-medium">+971 00 000 0000</span>
               </a>
             </div>
 
             {/* Mobile Toggle */}
             <div className="lg:hidden">
-              <button
-                onClick={() => setIsOpen(!isOpen)}
-                className="text-[#113F67] hover:text-[#34699A]"
-              >
-                {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              <button onClick={() => setIsOpen(!isOpen)} className="text-gray-700 hover:text-[#0028F5] transition-colors duration-300">
+                {isOpen ? <X className="w-6 h-6" /> : <MenuIcon className="w-6 h-6" />}
               </button>
             </div>
           </div>
@@ -76,54 +50,43 @@ const Navbar = () => {
 
         {/* Mobile Menu */}
         {isOpen && (
-          <div className="lg:hidden bg-white border-t border-gray-200 shadow-sm">
-            <div className="px-4 py-4 space-y-4">
-              {navItems.map((item) => (
-                <a
-                  key={item.name}
-                  href={item.href}
-                  onClick={() => setIsOpen(false)}
-                  className="block text-sm text-[#113F67] hover:text-[#34699A]"
-                >
-                  {item.name}
-                </a>
-              ))}
+          <div className="lg:hidden bg-white border-t border-gray-100 shadow-lg">
+            <div className="px-6 py-6 space-y-4">
+              <Link to="/" onClick={() => setIsOpen(false)} className="block text-gray-700 hover:text-[#0028F5] font-medium">Home</Link>
+              <Link to="/services" onClick={() => setIsOpen(false)} className="block text-gray-700 hover:text-[#0028F5] font-medium">Services</Link>
+              <Link to="/menu" onClick={() => setIsOpen(false)} className="block text-gray-700 hover:text-[#0028F5] font-medium">Menu</Link>
+              <Link to="/about" onClick={() => setIsOpen(false)} className="block text-gray-700 hover:text-[#0028F5] font-medium">About</Link>
+              <Link to="/contact" onClick={() => setIsOpen(false)} className="block text-gray-700 hover:text-[#0028F5] font-medium">Contact</Link>
 
-              {/* Contact Section in Mobile Menu */}
-              <div className="border-t pt-4 text-sm space-y-3 text-[#113F67]">
-                <div className="flex items-center">
-                  <Phone className="w-4 h-4 mr-2 text-[#34699A]" />
-                  +971 50 000 0000
+              {/* Contact Info */}
+              <div className="border-t border-gray-100 pt-6 space-y-4">
+                <div className="flex items-center text-gray-600">
+                  <Phone className="w-4 h-4 mr-3 text-[#0028F5]" />
+                  <span className="font-medium">+971 00 000 0000</span>
                 </div>
-                <div className="flex items-center">
-                  <Mail className="w-4 h-4 mr-2 text-[#34699A]" />
-                  icecream@zainallaban.com
+                <div className="flex items-center text-gray-600">
+                  <Mail className="w-4 h-4 mr-3 text-[#0028F5]" />
+                  <span className="font-medium">icecream@zaainallaban.com</span>
                 </div>
-                <div className="flex items-center">
-                  <MapPin className="w-4 h-4 mr-2 text-[#34699A]" />
-                  <a
-                    href="https://maps.app.goo.gl/example"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline"
-                  >
-                    Dubai, UAE
-                  </a>
+                <div className="flex items-center text-gray-600">
+                  <MapPin className="w-4 h-4 mr-3 text-[#0028F5]" />
+                  <span className="font-medium">Dubai, UAE</span>
                 </div>
-                <a
-                  href="/contact"
-                  className="block w-full text-center mt-3 px-4 py-2 bg-[#34699A] text-white rounded hover:bg-[#113F67] transition"
+                <Link
+                  to="/contact"
+                  onClick={() => setIsOpen(false)}
+                  className="block w-full text-center mt-6 px-6 py-3 bg-[#0028F5] text-white rounded-full hover:bg-blue-700 transition-all duration-300 font-medium"
                 >
                   Order Now
-                </a>
+                </Link>
               </div>
             </div>
           </div>
         )}
       </nav>
 
-      {/* Spacer to offset navbar height */}
-      <div className="h-16"></div>
+      {/* Spacer */}
+      <div className="h-20"></div>
     </>
   );
 };
